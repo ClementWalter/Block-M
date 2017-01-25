@@ -2,7 +2,7 @@
 
 chrome.tabs.onUpdated.addListener( function(tabId, changeInfo, tab){
 		title = changeInfo.title.toLowerCase();
-		isBlackM = title.includes("black m");
+		isBlackM = title.includes("black m") && !title.includes("block m");
 
 		if(isBlackM){
  	     	chrome.tabs.remove(tab.id)
