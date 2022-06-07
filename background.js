@@ -2,7 +2,7 @@
 
 chrome.tabs.onUpdated.addListener( function(tabId, changeInfo, tab){
 		title = changeInfo.title.toLowerCase();
-		
+		console.log('title', title)
 		chrome.storage.sync.get({
     artistName : ["black m"]
     }, function(items){
@@ -12,7 +12,7 @@ chrome.tabs.onUpdated.addListener( function(tabId, changeInfo, tab){
         isBlackM = title.includes(artist) && !title.includes("block m");
         if(isBlackM){
    	     	chrome.tabs.remove(tab.id);
-   	     	alert("Vous avez cherché Black M & Cie, vous avez trouvé la merde\nYou were interested in Black M, baltringue");
+   	     	alert("Vous avez cherché " + artist.toFirstUpper() + ", vous avez trouvé la merde\nYou were interested in " + artist.toFirstUpper() + ", baltringue");
   		  }
       }
     });

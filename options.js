@@ -7,7 +7,7 @@ function save_options() {
     items.artistName.push(artistName);
     chrome.storage.sync.set(items, function() {
       // Update status to let user know options were saved.
-      document.getElementById('artistBlocked').innerHTML = items.artistName.join("<br>");
+      document.getElementById('artistBlocked').innerHTML = items.artistName.join("<br>").toFirstUpper();
     });
   });
 }
@@ -19,11 +19,21 @@ function restore_options() {
   chrome.storage.sync.get({
     artistName : ["black m"]
   }, function(items) {
-    document.getElementById('artistBlocked').innerHTML = items.artistName.join("<br>");
-    console.log(items.artistName.join('\n'));
+    document.getElementById('artistBlocked').innerHTML = items.artistName.join("<br>").toFirstUpper();
   });
+}
+
+function restore_default() {
+  
+  chrome.storage.sync.set({artistName : ["black m"]}, function() {
+      // Update status to let user know options were saved.
+      document.getElementById('artistBlocked').innerHTML = "black m".toFirstUpper();
+    });
+
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('add').addEventListener('click',
                                                  save_options);
+document.getElementById('del').addEventListener('click',
+                                                 restore_default);

@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
   "name": "Block M: the Black M blocker",
-  "version": "0.3",
+  "version": "0.5",
   "description": "This add prevents your computer from being irremediably corrupted by playing Black M",
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["toFirstUpper.js", "background.js"]
   },
   "browser_action": {
     "default_icon": "icon16.png"
